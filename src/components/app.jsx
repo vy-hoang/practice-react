@@ -1,18 +1,24 @@
 import React from "react";
 import cars from "./data";
 import Details from "./details";
+import Style from "./style";
 
 function Items(cars){
     return(
-        <Details 
-           
+        <div>
+            <Style />
+            <Details 
+            
             color={cars.color}
             key={cars.id}
             type={cars.type}
             registration={cars.registration}
             capacity={cars.capacity}
         
-        />
+            />
+
+        </div>
+        
     );
 }
 
