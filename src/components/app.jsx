@@ -55,18 +55,23 @@ import Style from "./style";
 //         }
 // }
 class App extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
         this.state = {
             name: "Alice",
             age: "12"
         }
+    }
+    handleClick(){
+        console.log("clicked");
     }
     render(){
         return(
             <div>
                 <h1>{this.state.name}</h1>
                 <h3>{this.state.age} years old</h3>
+                <button onClick={this.handleClick}>Add</button>
             </div>
         )
     }
