@@ -54,26 +54,34 @@ import Style from "./style";
 //         );
 //         }
 // }
-class App extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-        this.state = {
-            name: "Alice",
-            age: "12"
-        }
+// class App extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.handleClick = this.handleClick.bind(this);
+//         this.state = {
+//             name: "Alice",
+//             age: "12"
+//         }
+//     }
+//     handleClick(){
+//         console.log("clicked");
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <h1>{this.state.name}</h1>
+//                 <h3>{this.state.age} years old</h3>
+//                 <button onClick={this.handleClick}>Add</button>
+//             </div>
+//         )
+//     }
+// }
+function App (){
+    function handleClick(){
+        console.log("cliked");
     }
-    handleClick(){
-        console.log("clicked");
-    }
-    render(){
-        return(
-            <div>
-                <h1>{this.state.name}</h1>
-                <h3>{this.state.age} years old</h3>
-                <button onClick={this.handleClick}>Add</button>
-            </div>
-        )
-    }
+    return(
+        <button onClick={handleClick}>Clicked</button>
+    );
 }
 export default App;
