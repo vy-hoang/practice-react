@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import cars from "./data";
-import Details from "./details";
-import Style from "./style";
+import {useState} from 'react';
+// import cars from "./data";
+// import Details from "./details";
+// import Style from "./style";
 
 // function Items(cars){
 //     return(
@@ -76,12 +77,43 @@ import Style from "./style";
 //         )
 //     }
 // }
-function App (){
-    function handleClick(){
-        console.log("cliked");
+// function App (){
+//     const [num, setNum] = useState(0);
+//     function handleClick(){
+//         setNum(num + 1)
+//         console.log("cliked");
+//     }
+//     return(
+//         <div>
+//             <h3>{num}</h3>
+//             <button onClick={handleClick}>Clicked</button>
+//         </div>
+       
+//     );
+// }
+class App extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            num: 0
+        }
+        this.handleClick = this.handleClick.bind(this);
     }
-    return(
-        <button onClick={handleClick}>Clicked</button>
-    );
+    handleClick(){
+        this.setState(prevState =>{
+            return{
+                num: prevState.num + 1
+        }
+        })
+    }
+    
+    render(){
+        return(
+            <div>
+                <h3>{this.state.num}</h3>
+                <button onClick={this.handleClick}>Clicked</button>
+            </div>
+        )
+    }
 }
 export default App;
