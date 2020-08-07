@@ -117,32 +117,78 @@ import React, { Component } from "react";
 //     }
 // }
 
-class App extends Component{
-    constructor(){
-        super()
-        this.state = {date: new Date()};
+// class App extends Component{
+//     constructor(){
+//         super()
+//         this.state = {date: new Date()};
+//         console.log("original");
+//     }
+//     componentDidMount(){
+//         this.timerID = setInterval(
+//             () => this.tick(), 1000
+//         );
+//         console.log("did mount");
+//     }
+//     componentWillMount(){
+//         clearInterval(this.timerID);
+//         console.log("will mount");
+//     }
+//     tick(){
+//         this.setState({
+//             date: new Date()
+//         });
+//         console.log("update");
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <h2>Hello, clock</h2>
+//                 <p>it is {this.state.date.toLocaleTimeString()}</p>
+//             </div>
+//         );
+//     }
+// }
+
+
+class App extends React.Component {
+    constructor(props)
+    {
+      super(props);
+       this.state = {
+         date : new Date(),
+         clickedStatus: false,
+         list:[]
+       };
     }
-    componentDidMount(){
-        this.timerID = setInterval(
-            () => this.tick(), 1000
-        );
+    componentWillMount() {
+        console.log('Component will mount!')
+     }
+    componentDidMount() {
+        console.log('Component did mount!')
+        this.getList();
+     }
+    getList=()=>{
+    //  /*** method to make api call***
+     fetch('https://api.mydomain.com')
+        .then(response => response.json())
+        .then(data => this.setState({ list:data }));
     }
-    componentWillMount(){
-        clearInterval(this.timerID);
-    }
-    tick(){
-        this.setState({
-            date: new Date()
-        });
-    }
+     shouldComponentUpdate(nextProps, nextState){
+       return this.state.list!==nextState.list
+      }
+     componentWillUpdate(nextProps, nextState) {
+        console.log('Component will update!');
+     }
+     componentDidUpdate(prevProps, prevState) {
+        console.log('Component did update!')
+     }
     render() {
         return (
-            <div>
-                <h2>Hello, clock</h2>
-                <p>it is {this.state.date.toLocaleTimeString()}</p>
-            </div>
+           <div>
+              <h3>Hello Mounting Lifecycle Methods!</h3>
+           </div>
         );
-    }
+     }
 }
 
 export default App;
